@@ -14,7 +14,16 @@ This following repo contains the Storm topology code and the instructions to run
 
   1. `git clone https://github.com/aperkaz/storm-twitter-top-hashtags.git`
   2. `cd /storm-twitter-top-hashtags`
-  3. `vagrant up`
+  3. Spin up the VM: `vagrant up`
   4. Using SSH client, SSH `127.0.0.1:2222`
   4.1 Log in `vagrant:vagrant`
-  5.
+  5. Run the [visualization](127.0.0.1:5000)
+  5.1 Inside the VM: `cd /vagrant/visualization`
+  5.2 `python app.py`
+  6. Package the topology
+  6.1 Inside the VM: 'cd /vagrant'
+  6.2 `mvn clean`
+  6.3 `mvn package`
+  7. Execute the packaged topology
+  7.1 Inside the VM: `cd /vagrant`
+  7.2 `storm jar target/storm-twitter-top-hashtags-0.0.1-SNAPSHOT-jar-with-dependencies.jar storm.TopNTweetTopology`
