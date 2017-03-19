@@ -13,7 +13,7 @@ This following repo contains the Storm topology code and the instructions to run
 ## Getting Started
 
   1. `git clone https://github.com/aperkaz/storm-twitter-top-hashtags.git`
-  2. `cd /storm-twitter-top.hashtags`
+  2. `cd /storm-twitter-top-hashtags`
   3. `vagrant up`
   4. Using SSH client, SSH `127.0.0.1:2222`
   4.1 Log in `vagrant:vagrant`
