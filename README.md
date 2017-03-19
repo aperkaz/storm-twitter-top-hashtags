@@ -1,6 +1,6 @@
 # Twitter Top Hashtags
 
-Stream processing pipeline that performs the real time analysis of top hashtags on Twitter.
+Stream processing pipeline that performs the real time analysis of top hashtags on Twitter, using [Apache Storm](http://storm.apache.org/).
 
 This following repo contains the Storm topology code and the instructions to run it locally with [Local Mode](http://storm.apache.org/releases/0.10.0/Local-mode.html). This simulates the behavior of the topology as it was deployed into a cluster.
 
