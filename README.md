@@ -25,5 +25,5 @@ This following repo contains the Storm topology code and the instructions to run
   6.2. `mvn clean`<br/>
   6.3. `mvn package`<br/>
   7. Execute the packaged topology <br/>
-  7.1. Inside the VM: `cd /vagrant` <br/>
+  7.1. Inside the VM: `cd /vagrant/topology` <br/>
   7.2. `storm jar target/storm-twitter-top-hashtags-0.0.1-SNAPSHOT-jar-with-dependencies.jar storm.TopNTweetTopology`
