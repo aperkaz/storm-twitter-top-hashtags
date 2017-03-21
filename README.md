@@ -17,7 +17,7 @@ This following repo contains the Storm topology code and the instructions to run
   3. Spin up the VM: `vagrant up`
   4. Using SSH client, SSH `127.0.0.1:2222` <br/>
   4.1. Log in `vagrant:vagrant`
-  5. Run the [visualization](127.0.0.1:5000) <br/>
+  5. Run the [visualization](http://127.0.0.1:5000) <br/>
   5.1. Inside the VM: `cd /vagrant/visualization`<br/>
   5.2. `python app.py`
   6. Package the topology <br/>

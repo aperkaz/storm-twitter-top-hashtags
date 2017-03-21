@@ -37,9 +37,10 @@ circle {
 
 <body class="text-center">
   <h1 style="color:#55ACEE">Storm Twetter Top Hashtags</h1>
-    <p style="color:#55ACEE">
-      &nbsp<img src="/static/alainPicture.jpg" alt="My picture" height="60" width="60">
-      &nbsp&nbspAlain's Word Count</p>
+    <div style="color:#55ACEE">
+      <img src="/static/alainPicture.jpg" alt="My picture" height="60" width="60" style="border: 1px; border-radius: 30px; vertical-align:middle">
+      <span><a href="https://github.com/aperkaz"> Alain Perkaz</a></span>
+    </div>
   <div id="chart"></div>
 </body>
 <script>
@@ -51,13 +52,13 @@ console.log(colors);
 
 var groupG = d3.select("body").append("svg")
 .attr("width", 1000)
-.attr("height", 350)
+.attr("height", 450)
 .attr("class", "wordcloud")
 .append("g")
 .attr("transform", "translate(320,200)");
 
 
-d3.layout.cloud().size([1000, 350])
+d3.layout.cloud().size([1000, 450])
 .words(frequency_list)
 .rotate(0)
 .fontSize(function(d) { return d.value; })
