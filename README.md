@@ -1,4 +1,4 @@
-# Twitter Top Hashtags
+# storm-twitter-top-hashtags
 
 Stream processing pipeline that performs the real time analysis of top hashtags on Twitter, using [Apache Storm](http://storm.apache.org/).
 
