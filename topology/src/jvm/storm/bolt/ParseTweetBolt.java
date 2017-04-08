@@ -1,4 +1,4 @@
-package storm;
+package storm.bolt;
 
 import backtype.storm.Config;
 import backtype.storm.LocalCluster;

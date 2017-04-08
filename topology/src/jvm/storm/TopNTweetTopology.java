@@ -17,6 +17,13 @@ import backtype.storm.tuple.Values;
 import backtype.storm.utils.Utils;
 
 import storm.spout.RandomSentenceSpout;
+import storm.spout.TweetSpout;
+
+import storm.bolt.ParseTweetBolt;
+import storm.bolt.CountBolt;
+import storm.bolt.IntermediateRankingsBolt;
+import storm.bolt.TotalRankingsBolt;
+import storm.bolt.ReportBolt;
 
 class TopNTweetTopology
 {
@@ -27,14 +34,6 @@ class TopNTweetTopology
     // create the topology
     TopologyBuilder builder = new TopologyBuilder();
 
-    /*
-     * In order to create the spout, you need to get twitter credentials
-     * If you need to use Twitter firehose/Tweet stream for your idea,
-     * create a set of credentials by following the instructions at
-     *
-     * https://dev.twitter.com/discussions/631
-     *
-     */
 
     // now create the tweet spout with the credentials
     TweetSpout tweetSpout = new TweetSpout(
@@ -48,22 +47,11 @@ class TopNTweetTopology
     // attach the tweet spout to the topology - parallelism of 1
     builder.setSpout("tweet-spout", tweetSpout, 1);
 
-    // attach the Random Sentence Spout to the topology - parallelism of 1
-    //builder.setSpout("random-sentence-spout", new RandomSentenceSpout(), 1);
-
     // attach the parse tweet bolt using shuffle grouping
     builder.setBolt("parse-tweet-bolt", new ParseTweetBolt(), 10).shuffleGrouping("tweet-spout");
-    //builder.setBolt("parse-tweet-bolt", new ParseTweetBolt(), 10).shuffleGrouping("random-sentence-spout");
 
     // attach the count bolt using fields grouping - parallelism of 15
     builder.setBolt("count-bolt", new CountBolt(), 15).fieldsGrouping("parse-tweet-bolt", new Fields("tweet-word"));
-
-    // attach rolling count bolt using fields grouping - parallelism of 5
-    // TEST
-    //builder.setBolt("rolling-count-bolt", new RollingCountBolt(30, 10), 1).fieldsGrouping("parse-tweet-bolt", new Fields("tweet-word"));
-
-    //from incubator-storm/.../storm/starter/RollingTopWords.java
-    //builder.setBolt("intermediate-ranker", new IntermediateRankingsBolt(TOP_N), 4).fieldsGrouping("rolling-count-bolt", new Fields("obj"));
 
     builder.setBolt("intermediate-ranker", new IntermediateRankingsBolt(TOP_N), 4).fieldsGrouping("count-bolt", new Fields("word"));
     builder.setBolt("total-ranker", new TotalRankingsBolt(TOP_N)).globalGrouping("intermediate-ranker");

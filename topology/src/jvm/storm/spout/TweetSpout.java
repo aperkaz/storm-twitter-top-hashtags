@@ -1,4 +1,4 @@
-package storm;
+package storm.spout;
 
 import backtype.storm.Config;
 import backtype.storm.LocalCluster;

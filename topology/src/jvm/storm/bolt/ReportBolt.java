@@ -1,4 +1,4 @@
-package storm;
+package storm.bolt;
 
 import backtype.storm.Config;
 import backtype.storm.LocalCluster;
@@ -57,17 +57,6 @@ public class ReportBolt extends BaseRichBolt
       Long count = r.getCount();
       redis.publish("WordCountTopology", word + "|" + Long.toString(count));
     }
-
-    // access the first column 'word'
-    //String word = tuple.getStringByField("word");
-
-    // access the second column 'count'
-    //String word = rankedWords.toString();
-    //Integer count = tuple.getIntegerByField("count");
-    //Long count = new Long(100);
-
-    // publish the word count to redis using word as the key
-    //redis.publish("WordCountTopology", word + ":" + Long.toString(count));
   }
 
   public void declareOutputFields(OutputFieldsDeclarer declarer)

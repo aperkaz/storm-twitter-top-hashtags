@@ -28,3 +28,4 @@ This following repo contains the Storm topology code and the instructions to run
   7.1. Inside the VM: `cd /vagrant/topology` <br/>
   7.2. `storm jar target/storm-twitter-top-hashtags-0.0.1-SNAPSHOT-jar-with-dependencies.jar storm.TopNTweetTopology`
   8. Live generated results at `http://127.0.0.1:5000`.
+  9. Shutdown the VM: `vagrant halt`
