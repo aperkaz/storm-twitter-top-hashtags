@@ -10,6 +10,10 @@ This following repo contains the Storm topology code and the instructions to run
   * [Oracle VM VirtualBox](https://www.virtualbox.org/) - general purpose virtualizer .
   * SSH client, such as [PuTTY](http://www.putty.org/).
 
+## Topology
+ 
+ ![topology](https://cloud.githubusercontent.com/assets/16224847/25064079/1ea5124a-21f3-11e7-9708-22b2e3413ecf.png)
+
 ## Getting Started
 
   1. `git clone https://github.com/aperkaz/storm-twitter-top-hashtags.git`
